@@ -12,11 +12,11 @@ class Generator implements GeneratorInterface
 {
     public function generate(string $number, string $prefix = '200'): string
     {
-        if (strlen($number) > 9) {
+        if (strlen($number) + strlen($prefix) > 12) {
             throw new TooLongNumberException();
         }
 
-        $code = $prefix . str_pad($number, 9, '0', STR_PAD_LEFT);
+        $code = $prefix . str_pad($number, 12 - strlen($prefix), '0', STR_PAD_LEFT);
         $weightFlag = true;
         $sum = 0;
 
